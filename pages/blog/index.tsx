@@ -1,18 +1,23 @@
 import { client } from "../../utils/cmsClient";
 import { GetStaticProps, NextPage } from "next";
+import { blogContentForList, CmsAdditionalResponse } from "../../types/cms";
 
 // FIXME データ形式に合わせて治す。
-type Props ={
-    data:any;
-}
+type Props = {
+    contents: Array<blogContentForList>
+};
 
-const Page: NextPage<Props> = ({data}) => {
+type CmsResponse = Props & CmsAdditionalResponse;
+
+const Page: NextPage<Props> = ({contents}) => {
         return (
             <div>
                     <title>Create Next App</title>
                     <link rel="icon" href="/favicon.ico" />
                 <main>
-                    <h1 >{data.contents[0].title}</h1>
+                    <h1 >{contents[0].title}</h1>
+                    <p>{contents[0].publishedAt}</p>
+                    <p>{contents[0].explain}</p>
                     <p >
                         Get started by editing <code>pages/index.js</code>
                     </p>
@@ -22,13 +27,16 @@ const Page: NextPage<Props> = ({data}) => {
     };
 
 export const getStaticProps: GetStaticProps  = async () => {
-    const data = await client.get({
+    // ref https://document.microcms.io/content-api/get-list-contents#h91d3988597
+    // ページングが必要な場合 limit: 10, offset: 0,
+    const data : CmsResponse = await client.get({
         endpoint: 'blog',
+        queries: {fields: 'id,title,publishedAt,updatedAt,explain' }
     });
 
     return {
         props: {
-            data,
+            contents: data.contents,
         },
     };
 };

@@ -20,7 +20,7 @@ export type blogContent = {
     publishedAt:string,
     title:string,
     explain:string,
-    content:ReactNode,
+    content:string, // htmlで帰ってくる
     "content_image":blogContentImage
 }
 

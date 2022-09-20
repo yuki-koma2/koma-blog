@@ -12,12 +12,8 @@ export const BlogContent: React.FC<Props> = ({post}) => {
             <h1>{post.title}</h1>
             <p>{post.publishedAt}</p>
             <p>{post.explain}</p>
-            <Image src={post.content_image.url} alt={'blog image '} width={post.content_image.width}
-                   height={post.content_image.height}/>
+            <hr/>
             <div dangerouslySetInnerHTML={{__html: post.content}}></div>
-            <p>
-                Get started by editing <code>pages/index.js</code>
-            </p>
         </>
     )
 

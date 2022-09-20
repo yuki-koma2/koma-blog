@@ -22,6 +22,7 @@ export type blogContent = {
     explain:string,
     content:string, // htmlで帰ってくる
     "content_image":blogContentImage
+    tags:Array<String>
 }
 
 // 一覧取得時のフィールド

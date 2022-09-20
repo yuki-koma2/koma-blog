@@ -1,7 +1,3 @@
-
-import { ReactNode } from "react";
-
-
 /**
  * ブログの全てのフィールド
  * サンプル値
@@ -14,24 +10,33 @@ import { ReactNode } from "react";
  *             "content": "<p>いろいろかける</p>",
  */
 export type blogContent = {
-    id:string,
-    createdAt:string,
-    updatedAt:string,
-    publishedAt:string,
-    title:string,
-    explain:string,
-    content:string, // htmlで帰ってくる
-    "content_image":blogContentImage
-    tags:Array<String>
+    id: string,
+    createdAt: string, // TODO 日付変換
+    updatedAt: string,
+    publishedAt: string,
+    title: string,
+    explain: string,
+    content: string, // htmlで帰ってくる
+    "content_image": blogContentImage
+    tags: Array<tagInfo>
+}
+
+export type tagInfo = {
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+    publishedAt: string,
+    revisedAt: string,
+    tag: string
 }
 
 // 一覧取得時のフィールド
 export type blogContentForList = {
-    id:string,
-    updatedAt:string,
-    publishedAt:string,
-    title:string,
-    explain:string,
+    id: string,
+    updatedAt: string,
+    publishedAt: string,
+    title: string,
+    explain: string,
 }
 
 export type blogContentImage = {

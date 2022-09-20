@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import { blogContent } from "../../../types/cms";
 
@@ -14,6 +13,11 @@ export const BlogContent: React.FC<Props> = ({post}) => {
             <p>{post.explain}</p>
             <hr/>
             <div dangerouslySetInnerHTML={{__html: post.content}}></div>
+            <footer>
+                {post.tags.map(tagInfo => {
+                    return (<p key={tagInfo.id}>{tagInfo.tag}</p>)
+                })}
+            </footer>
         </>
     )
 

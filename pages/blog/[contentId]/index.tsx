@@ -1,6 +1,5 @@
 import { GetServerSideProps, NextPage } from "next";
 import { blogContent } from "../../../types/cms";
-import Head from "next/head";
 import Image from "next/image";
 import { client } from "../../../utils/cmsClient";
 
@@ -11,25 +10,17 @@ type Props = {
 
 const Page: NextPage<Props> = ({post}) => {
     return (
-        <div>
-            <Head>
-                <title>sample koma blog</title>
-                <meta name="description" content="this is a sample"/>
-                <link rel="icon" href="/favicon.ico"/>
-            </Head>
-
-            <main>
-                <h1>{post.title}</h1>
-                <p>{post.publishedAt}</p>
-                <p>{post.explain}</p>
-                <Image src={post.content_image.url} alt={'blog image '} width={post.content_image.width}
-                       height={post.content_image.height}/>
-                <div dangerouslySetInnerHTML={{__html: post.content}}></div>
-                <p>
-                    Get started by editing <code>pages/index.js</code>
-                </p>
-            </main>
-        </div>
+        <>
+            <h1>{post.title}</h1>
+            <p>{post.publishedAt}</p>
+            <p>{post.explain}</p>
+            <Image src={post.content_image.url} alt={'blog image '} width={post.content_image.width}
+                   height={post.content_image.height}/>
+            <div dangerouslySetInnerHTML={{__html: post.content}}></div>
+            <p>
+                Get started by editing <code>pages/index.js</code>
+            </p>
+        </>
     );
 };
 

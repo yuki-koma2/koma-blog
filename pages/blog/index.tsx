@@ -1,6 +1,7 @@
 import { client } from "../../utils/cmsClient";
 import { GetStaticProps, NextPage } from "next";
 import { blogContentForList, CmsAdditionalResponse } from "../../types/cms";
+import { BlogList } from "../../feature/blog/BlogList";
 
 type Props = {
     contents: Array<blogContentForList>
@@ -9,16 +10,7 @@ type Props = {
 type CmsResponse = Props & CmsAdditionalResponse;
 
 const Page: NextPage<Props> = ({contents}) => {
-        return (
-            <>
-                    <h1 >{contents[0].title}</h1>
-                    <p>{contents[0].publishedAt}</p>
-                    <p>{contents[0].explain}</p>
-                    <p >
-                        Get started by editing <code>pages/index.js</code>
-                    </p>
-            </>
-        );
+    return (<BlogList contents={contents}/>);
     };
 
 export const getStaticProps: GetStaticProps  = async () => {

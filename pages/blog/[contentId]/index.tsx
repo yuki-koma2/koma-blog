@@ -1,27 +1,14 @@
 import { GetServerSideProps, NextPage } from "next";
 import { blogContent } from "../../../types/cms";
-import Image from "next/image";
 import { client } from "../../../utils/cmsClient";
+import { BlogContent } from "../../../feature/blog/content/BlogContent";
 
 type Props = {
     post: blogContent
 };
 
-
 const Page: NextPage<Props> = ({post}) => {
-    return (
-        <>
-            <h1>{post.title}</h1>
-            <p>{post.publishedAt}</p>
-            <p>{post.explain}</p>
-            <Image src={post.content_image.url} alt={'blog image '} width={post.content_image.width}
-                   height={post.content_image.height}/>
-            <div dangerouslySetInnerHTML={{__html: post.content}}></div>
-            <p>
-                Get started by editing <code>pages/index.js</code>
-            </p>
-        </>
-    );
+    return (<BlogContent post={post}/>);
 };
 
 export const getServerSideProps: GetServerSideProps = async ({params}) => {

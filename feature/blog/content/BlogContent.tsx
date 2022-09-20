@@ -1,5 +1,6 @@
 import React from "react";
 import { blogContent } from "../../../types/cms";
+import Link from "next/link";
 
 type Props = {
     post: blogContent
@@ -15,7 +16,11 @@ export const BlogContent: React.FC<Props> = ({post}) => {
             <div dangerouslySetInnerHTML={{__html: post.content}}></div>
             <footer>
                 {post.tags.map(tagInfo => {
-                    return (<p key={tagInfo.id}>{tagInfo.tag}</p>)
+                    return (
+                        <Link href={'/blog?tag=' + tagInfo.id} key={tagInfo.id}>
+                            <p>&rarr;  {tagInfo.tag}</p>
+                        </Link>
+                    )
                 })}
             </footer>
         </>

@@ -11,7 +11,7 @@
  */
 export type blogContent = {
     id: string,
-    createdAt: string, // TODO 日付変換
+    createdAt: string, // TODO 日付変換と型付け
     updatedAt: string,
     publishedAt: string,
     title: string,

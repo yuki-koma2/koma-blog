@@ -1,12 +1,15 @@
-import { blogContentForList } from "../../types/cms";
+import {blogContentForList} from "../../types/cms";
 import React from "react";
 import Link from "next/link";
+import {Pagination} from "../../components/molecules/Pagination/Pagination";
+import {routes} from "../../pages/routes";
 
 type Props = {
-    contents: Array<blogContentForList>
+    contents: Array<blogContentForList>,
+    totalCount: number,
 };
 
-export const BlogList: React.FC<Props> = ({contents}) => {
+export const BlogList: React.FC<Props> = ({contents, totalCount}) => {
     return (
         <>
             <section>
@@ -26,6 +29,9 @@ export const BlogList: React.FC<Props> = ({contents}) => {
                     )
                 })}
             </section>
+            <footer>
+                <Pagination totalCount={totalCount} basePath={routes.blog.path()}/>
+            </footer>
         </>
     )
 

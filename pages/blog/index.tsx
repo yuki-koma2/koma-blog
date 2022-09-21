@@ -5,20 +5,20 @@ import { BlogList } from "../../feature/blog/BlogList";
 import {pageNumberToQueryConverter} from "../../utils/pagination";
 
 type Props = {
-    contents: Array<blogContentForList>
+    contents: Array<blogContentForList>,
+    totalCount: number,
 };
 
 type CmsResponse = Props & CmsAdditionalResponse;
 
-const Page: NextPage<Props> = ({contents}) => {
-    return (<BlogList contents={contents}/>);
+const Page: NextPage<Props> = ({contents,totalCount}) => {
+    return (<BlogList contents={contents} totalCount={totalCount}/>);
     };
 
 export const getServerSideProps: GetServerSideProps = async ({query}) => {
     const tagId = query.tag as String;
     const pageNumber = Number(query.page);
     // ref https://document.microcms.io/content-api/get-list-contents#h91d3988597
-    // ページングが必要な場合 limit: 10, offset: 0,
     const data: CmsResponse = await client.get({
         endpoint: 'blog',
         queries: {
@@ -28,10 +28,10 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
             limit: isNaN(pageNumber) ? undefined : pageNumberToQueryConverter(pageNumber).limit
         }
     });
-
     return {
         props: {
             contents: data.contents,
+            totalCount: data.totalCount
         },
     };
 };

@@ -1,18 +1,21 @@
-import {usePagination} from "./pagination";
+import {usePagination} from "./usePagenation";
 import React from "react";
 
 type Props = {
-    totalCount:number,
-    basePath:string
+    totalCount: number,
+    basePath: string
 }
 
-export const Pagination:React.FC<Props> = ({totalCount,basePath}) => {
+export const Pagination: React.FC<Props> = ({totalCount, basePath}) => {
 
-    usePagination(totalCount,basePath)
+    const {
+        totalPageNumber,
+        pageJump
+    } = usePagination(totalCount, basePath)
 
 
     return (<section>
-        1
+
     </section>)
 
 }

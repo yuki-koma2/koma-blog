@@ -2,7 +2,8 @@ import { blogContentForList } from "../../types/cms";
 import React from "react";
 import Link from "next/link";
 import { routes } from "../../pages/routes";
-import { Pagination } from "../../components/Molecules/Pagination/Pagination";
+import Pagination from "../../components/Molecules/Pagination/Pagination";
+
 
 type Props = {
     contents: Array<blogContentForList>,

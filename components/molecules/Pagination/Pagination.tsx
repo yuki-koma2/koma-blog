@@ -1,5 +1,5 @@
 import { usePagination } from "./usePagenation";
-import React from "react";
+import React, { memo } from "react";
 import Link from "next/link";
 
 type Props = {
@@ -40,3 +40,5 @@ export const Pagination: React.FC<Props> = ({totalCount, basePath,selectedPageNu
             </ul>
     </section>)
 }
+
+export default memo(Pagination)

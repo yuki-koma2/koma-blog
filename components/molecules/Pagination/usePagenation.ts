@@ -30,7 +30,7 @@ export const usePagination = (totalCount: number, basePath: string, selectedPage
     // 共通処理
     const onClickTargetPage = useCallback((jumpToPage:number)=>{
         setSelectPage(jumpToPage);
-        router.replace(basePath + '?page=' + jumpToPage).then().catch()
+        router.push(basePath + '?page=' + jumpToPage).then().catch()
      },[basePath, router])
 
     // 次のページへ
@@ -62,13 +62,13 @@ export const usePagination = (totalCount: number, basePath: string, selectedPage
             items.push({
                 pageNumber:i,
                 isCurrentPage:i === selectedPage,
-                onClick:()=>onClickTargetPage(i),
+                onClick:()=>onClickTargetPage(i), // TODO: onClickで遷移するのかURL渡すだけか検討する。
                 redirectTo:basePath + '?page=' + i,
                 isDisplay:true
             })
         }
         return items
-    }, [totalPageNumber, selectedPage, onClickTargetPage])
+    }, [totalPageNumber, selectedPage, basePath, onClickTargetPage])
 
     return {
         totalPageNumber,

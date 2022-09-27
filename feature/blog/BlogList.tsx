@@ -1,15 +1,16 @@
-import {blogContentForList} from "../../types/cms";
+import { blogContentForList } from "../../types/cms";
 import React from "react";
 import Link from "next/link";
-import {Pagination} from "../../components/molecules/Pagination/Pagination";
-import {routes} from "../../pages/routes";
+import { routes } from "../../pages/routes";
+import { Pagination } from "../../components/Molecules/Pagination/Pagination";
 
 type Props = {
     contents: Array<blogContentForList>,
     totalCount: number,
+    pageNumber: number,
 };
 
-export const BlogList: React.FC<Props> = ({contents, totalCount}) => {
+export const BlogList: React.FC<Props> = ({contents, totalCount, pageNumber}) => {
     return (
         <>
             <section>
@@ -30,7 +31,7 @@ export const BlogList: React.FC<Props> = ({contents, totalCount}) => {
                 })}
             </section>
             <footer>
-                <Pagination totalCount={totalCount} basePath={routes.blog.path()}/>
+                <Pagination totalCount={totalCount} basePath={routes.blog.path()} selectedPageNumber={pageNumber}/>
             </footer>
         </>
     )

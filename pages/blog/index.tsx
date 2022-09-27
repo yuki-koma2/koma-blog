@@ -2,18 +2,19 @@ import { client } from "../../utils/cmsClient";
 import { GetServerSideProps, NextPage } from "next";
 import { blogContentForList, CmsAdditionalResponse } from "../../types/cms";
 import { BlogList } from "../../feature/blog/BlogList";
-import {pageNumberToQueryConverter} from "../../utils/pagination";
+import { pageNumberToQueryConverter } from "../../utils/pagination";
 
 type Props = {
     contents: Array<blogContentForList>,
     totalCount: number,
+    pageNumber: number,
 };
 
 type CmsResponse = Props & CmsAdditionalResponse;
 
-const Page: NextPage<Props> = ({contents,totalCount}) => {
-    return (<BlogList contents={contents} totalCount={totalCount}/>);
-    };
+const Page: NextPage<Props> = ({contents, totalCount, pageNumber}) => {
+    return (<BlogList contents={contents} totalCount={totalCount} pageNumber={pageNumber}/>);
+};
 
 export const getServerSideProps: GetServerSideProps = async ({query}) => {
     const tagId = query.tag as String;
@@ -31,7 +32,8 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
     return {
         props: {
             contents: data.contents,
-            totalCount: data.totalCount
+            totalCount: data.totalCount,
+            pageNumber: pageNumber
         },
     };
 };

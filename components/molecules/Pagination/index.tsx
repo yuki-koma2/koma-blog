@@ -41,4 +41,4 @@ export const Pagination: React.FC<Props> = ({totalCount, basePath,selectedPageNu
     </section>)
 }
 
-export default memo(Pagination)
+// export default memo(Pagination)

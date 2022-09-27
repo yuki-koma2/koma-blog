@@ -1,4 +1,4 @@
-// NOTE: this is practice for github copilot.
+// NOTE: this is practice for GitHub copilot.
 export const calculateDaysBetweenDates = (date1: Date, date2: Date) => {
   return Math.abs(date1.getTime() - date2.getTime()) / (1000 * 3600 * 24);
 };

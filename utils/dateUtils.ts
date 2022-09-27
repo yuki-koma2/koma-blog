@@ -81,3 +81,28 @@ export const getMonthString = (date: Date) => {
 export const getYearString = (date: Date) => {
   return date.toISOString().split('T')[0];
 };
+
+/**
+ * @param {string} dateString - date string formatted as ISO String. ex 2020-08-22T15:19:24.191Z
+ * @returns {Date} - date object
+ */
+export const parseDate = (dateString: string) => {
+  console.log("dateString", dateString);
+  // NOTE: if dateString is not ISO String, this function will return null.
+  // NOTE: if invalid format, return null
+  if (!dateString.match(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/)) {
+    return null;
+  }
+  // NOTE: if dateString is Empty String, this function will return null.
+  if (!dateString) {
+    return null;
+  }
+
+  const [splitDate, splitTime] = dateString.split('T');
+  const [year, month, date] = splitDate.split('-').map(Number);
+  const [hours, minutes, secondsWithMilli] = splitTime.split(':');
+  const _hours = Number(hours);
+  const _minutes = Number(minutes);
+  const [seconds, milliseconds] = secondsWithMilli.split('Z')[0].split('.').map(Number);
+  return new Date(year, month - 1, date, _hours, _minutes, seconds, milliseconds);
+}

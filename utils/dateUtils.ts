@@ -106,3 +106,8 @@ export const parseDate = (dateString: string) => {
   const [seconds, milliseconds] = secondsWithMilli.split('Z')[0].split('.').map(Number);
   return new Date(year, month - 1, date, _hours, _minutes, seconds, milliseconds);
 }
+
+export const isToday = (date: Date) => {
+  const today = getToday();
+  return date.toISOString().split('T')[0] === today.toISOString().split('T')[0];
+}

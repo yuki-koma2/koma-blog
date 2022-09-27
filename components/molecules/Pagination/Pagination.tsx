@@ -18,7 +18,6 @@ export const Pagination: React.FC<Props> = ({totalCount, basePath,selectedPageNu
         pagingItems,
     } = usePagination(totalCount, basePath,selectedPageNumber);
 
-
     return (
         <section>
             <ul className="flex justify-center">
@@ -39,8 +38,5 @@ export const Pagination: React.FC<Props> = ({totalCount, basePath,selectedPageNu
                 <li><span onClick={onClickNextPage}>next</span></li>
                 <li><span onClick={onClickLastPage}>last</span></li>
             </ul>
-
-
     </section>)
-
 }

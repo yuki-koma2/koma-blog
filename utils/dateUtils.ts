@@ -97,7 +97,7 @@ export const parseDate = (dateString: string) => {
   if (!dateString) {
     return null;
   }
-
+// NOTE: そのままDateオブジェクトに変換すると、日本時間になってしまうので、UTCに変換する。
   const [splitDate, splitTime] = dateString.split('T');
   const [year, month, date] = splitDate.split('-').map(Number);
   const [hours, minutes, secondsWithMilli] = splitTime.split(':');

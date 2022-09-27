@@ -1,5 +1,5 @@
 import { usePagination } from "./usePagenation";
-import React, { memo } from "react";
+import React from "react";
 import Link from "next/link";
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
     selectedPageNumber: number,
 }
 
-export const Pagination: React.FC<Props> = ({totalCount, basePath,selectedPageNumber}) => {
+export const Pagination: React.FC<Props> = ({totalCount, basePath, selectedPageNumber}) => {
 
     const {
         onClickNextPage,
@@ -16,7 +16,7 @@ export const Pagination: React.FC<Props> = ({totalCount, basePath,selectedPageNu
         onClickFirstPage,
         onClickLastPage,
         pagingItems,
-    } = usePagination(totalCount, basePath,selectedPageNumber);
+    } = usePagination(totalCount, basePath, selectedPageNumber);
 
     return (
         <section>
@@ -27,7 +27,7 @@ export const Pagination: React.FC<Props> = ({totalCount, basePath,selectedPageNu
                     return (
                         <React.Fragment key={index}>
                             {item.isCurrentPage ?
-                                <span >{item.pageNumber}</span>
+                                <span>{item.pageNumber}</span>
                                 :
                                 <Link href={item.redirectTo}>{item.pageNumber}</Link>
                             }
@@ -38,7 +38,7 @@ export const Pagination: React.FC<Props> = ({totalCount, basePath,selectedPageNu
                 <li><span onClick={onClickNextPage}>next</span></li>
                 <li><span onClick={onClickLastPage}>last</span></li>
             </ul>
-    </section>)
+        </section>)
 }
 
 // export default memo(Pagination)

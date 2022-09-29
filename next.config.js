@@ -4,8 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ["images.microcms-assets.io"]
-  },
-  pageExtensions: ['route.ts']
+  }
 }
 
 module.exports = nextConfig

@@ -1,6 +1,6 @@
 import { client } from "../../utils/cmsClient";
 import { GetServerSideProps, NextPage } from "next";
-import { blogContentForList, CmsAdditionalResponse } from "../../types/cms";
+import { blogContentForList, CmsAdditionalResponse } from "../../../types/cms";
 import { BlogList } from "../../feature/blog/BlogList";
 import { pageNumberToQueryConverter } from "../../utils/pagination";
 

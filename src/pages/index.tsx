@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 import Link from "next/link";
 
 const Home: NextPage = () => {
@@ -9,7 +9,7 @@ const Home: NextPage = () => {
       <Head>
         <title>sample koma blog</title>
         <meta name="description" content="this is a sample"/>
-        <link rel="icon" href="/favicon.ico"/>
+        <link rel="icon" href="/public/favicon.ico"/>
       </Head>
 
       <main className={styles.main}>

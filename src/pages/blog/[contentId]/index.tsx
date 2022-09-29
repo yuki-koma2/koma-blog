@@ -1,5 +1,5 @@
 import { GetServerSideProps, NextPage } from "next";
-import { blogContent } from "../../../types/cms";
+import { blogContent } from "../../../../types/cms";
 import { client } from "../../../utils/cmsClient";
 import { BlogContent } from "../../../feature/blog/content/BlogContent";
 

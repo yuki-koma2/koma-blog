@@ -7,7 +7,7 @@ export default function Document() {
             <Head>
                 <meta charSet="utf-8" />
                 <meta name="description" content="this is a sample"/>
-                <link rel="icon" href="/favicon.ico"/>
+                <link rel="icon" href="/public/favicon.ico"/>
             </Head>
             <body>
             <Main />

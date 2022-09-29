@@ -1,8 +1,8 @@
-import { blogContentForList } from "../../types/cms";
+import { blogContentForList } from "../../../types/cms";
 import React from "react";
 import Link from "next/link";
-import { routes } from "../../pages/routes";
-import { Pagination } from "../../components/Molecules/Paging/Pagination";
+import { routes } from "../../routes";
+import { Pagination } from "../../components/molecules/Paging/Pagination";
 
 
 type Props = {

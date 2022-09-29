@@ -1,5 +1,5 @@
 import React from "react";
-import { blogContent } from "../../../types/cms";
+import { blogContent } from "../../../../types/cms";
 import Link from "next/link";
 
 type Props = {

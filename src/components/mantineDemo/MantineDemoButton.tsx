@@ -1,9 +1,13 @@
 import { NextLink } from '@mantine/next';
 import { Button } from '@mantine/core';
 
-export function MantineDemoButton() {
+type Props = {
+    href?: string;
+}
+
+export function MantineDemoButton({href}:Props) {
     return (
-        <Button component={NextLink} href="/blog">
+        <Button component={NextLink} href={href ?? '/'}>
             Next link button
         </Button>
     );

@@ -37,7 +37,7 @@ const Home: NextPage = () => {
             </div>
           </Link>
 
-          <MantineDemoButton />
+          <MantineDemoButton href={'/ui-test'}/>
 
         </div>
       </main>

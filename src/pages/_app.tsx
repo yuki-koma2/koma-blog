@@ -2,6 +2,7 @@ import '../../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { NextSeo } from "next-seo";
 import { MantineProvider } from "@mantine/core";
+import { NextUIProvider } from "@nextui-org/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -19,7 +20,9 @@ function MyApp({ Component, pageProps }: AppProps) {
                   colorScheme: 'light',
               }}
           >
+              <NextUIProvider>
               <Component {...pageProps} />
+              </NextUIProvider>
           </MantineProvider>
       </>
   )

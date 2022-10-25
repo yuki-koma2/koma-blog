@@ -1,34 +1,93 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Commit Message Format
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### コミットコメントを残す理由
+- コミットコメントは仕様の変更履歴。過去の仕様の変更敬意を残すためにも、コミットコメントを残すことが重要。
+- レビュアーが何に対する変更なのかわかりやすくすることで、レビューコストを減らす。
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+というように色々とメリットがあるので、個人開発の時もコミット単位やコミットメッセージをちゃんと書くようにする。
 
-## Learn More
+### コメントのフォーマット
 
-To learn more about Next.js, take a look at the following resources:
+JIRAを使っているならチケット番号を書くと勝手にリンクしてくれるので便利。
+今回はそこまでやるつもりないのでやらない。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+<Prefix> : 修正内容概要
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+修正した内容の細かい説明
+```
 
-## Deploy on Vercel
+#### Prefix
+[Angular.js/DEVELOPERS.md](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#type)を参考に
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+feat: A new feature
+fix: A bug fix
+docs: Documentation only changes
+style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+refactor: A code change that neither fixes a bug nor adds a feature
+perf: A code change that improves performance
+test: Adding missing or correcting existing tests
+chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
+test: Adding missing or correcting existing tests
+ci: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+適切な単位でコミットを着くことにつながる。
+
+### コミットをする際のルール・補足
+
+- 基本的にtest,buildは通る状態でコミットをする。
+  - ただし、これはpushする場合。ローカルではどうでもいい。
+  - 整形してからpush
+- コミットメッセージは基本的に英語で書く。
+  - 表現が難しい場合は日本語でもいい。
+
+## ブランチのルール
+github flowを採用する。
+
+### ブランチの種類
+- master
+- develop
+- feature/xxx
+- release/YYYYMMDD
+- hotfix/xxx
+- chore/xxx
+
+### ブランチの役割
+- master
+  - 運用中の本番環境
+  - 本番環境へのデプロイはmasterからのみ
+- develop
+  - 開発環境
+- feature/xxx
+  - 機能の追加
+  - developからブランチを切る。
+  - developにマージする。
+- release/YYYYMMDD
+  - リリース
+  - developからブランチを切る。
+  - masterにマージする。
+- hotfix/xxx
+  - リリース後のバグ修正
+  - masterからブランチを切る。
+  - masterにマージする。
+  - developにマージする。
+- chore/xxx
+  - チューニングやリファクタリングなど軽微な修正
+  - developからブランチを切る。
+  - developにマージする。
+
+## Pull Requestのルール
+- 基本的には1人での開発なので、Pull Requestは基本的には必要ない。
+- このプロジェクトをフォークして使ったり、他の人と開発する場合はPull Requestを使うことになるのでそのとき考える。

@@ -1,3 +1,19 @@
+export const longestCommonPrefix = (strs: string[]): string => {
+    let commonPref = "";
+
+    const firstString = strs[0];
+    for (let i = 0; i < firstString.length; i++) {
+        const booleans = strs.map(value => {
+                return value[i] === firstString[i]
+            }
+        );
+        if (booleans.every(v => v)) {
+            commonPref = commonPref + firstString[i]
+        }
+    }
+    return commonPref
+};
+
 const romanNumberMap = new Map<RomanString, number>(
     [
         ['I', 1],

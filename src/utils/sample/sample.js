@@ -20,6 +20,7 @@ const fibonacci = (n) => {
         // A(n-1) = A(n) 一つ進む
         b = answer;
     }
+    return answer;
 }
 
 export const yourself = {

@@ -30,5 +30,10 @@ describe('study code Ts test', function () {
             const actual = longestCommonPrefix(strs);
             expect(actual).toBe("")
         });
+        it('should c', function () {
+            const strs = ["cir","car"]
+            const actual = longestCommonPrefix(strs);
+            expect(actual).toBe("c")
+        });
     });
 });

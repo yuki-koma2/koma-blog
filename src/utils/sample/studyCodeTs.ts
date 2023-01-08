@@ -9,6 +9,8 @@ export const longestCommonPrefix = (strs: string[]): string => {
         );
         if (booleans.every(v => v)) {
             commonPref = commonPref + firstString[i]
+        } else {
+          break;
         }
     }
     return commonPref

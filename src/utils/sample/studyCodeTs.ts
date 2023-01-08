@@ -17,8 +17,6 @@ export const threeSum = (nums: number[]): number[][] => {
         return resultArray
     }
     for (let i = 0; i < tmpArray.length; i++) {
-        console.log(tmpArray[i]);
-        console.log(tmpArray.slice(i+1,tmpArray.length));
         const booleans = tmpArray.slice(i+1,tmpArray.length).map(arr =>{
             // [0,0,0]の時は特殊な処理が必要
             if (tmpArray[i][0]===0 && tmpArray[i][1] === 0 ) {
@@ -28,12 +26,10 @@ export const threeSum = (nums: number[]): number[][] => {
             && arr.includes(tmpArray[i][1])
             && arr.includes(tmpArray[i][2])
         });
-        console.log(booleans);
         if (!booleans.some(v => v)) {
             resultArray.push(tmpArray[i])
         }
     }
-    console.log(resultArray);
     // 全てが重複OR一つしかなければそのまま返す
     if (tmpArray.length >= 1 && resultArray.length === 0) {
         resultArray.push(tmpArray[0])

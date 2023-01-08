@@ -1,4 +1,4 @@
-import { longestCommonPrefix, romanToInt } from "./studyCodeTs";
+import { longestCommonPrefix, romanToInt, threeSum } from "./studyCodeTs";
 
 describe('study code Ts test', function () {
     describe('roman to int', function () {
@@ -34,6 +34,48 @@ describe('study code Ts test', function () {
             const strs = ["cir","car"]
             const actual = longestCommonPrefix(strs);
             expect(actual).toBe("c")
+        });
+    });
+
+    describe(' 3Sum', function () {
+        it('should [[-1,-1,2],[-1,0,1]]', function () {
+            const  nums = [-1,0,1,2,-1,-4];
+            const actual = threeSum(nums);
+            expect(actual.length).toBe(2)
+            // expect(actual[0]).toContainEqual([-1,-1,2])
+            expect(actual[0]).toStrictEqual([-1, 2, -1])
+            // expect(actual[1]).toContainEqual([-1,0,1])
+            expect(actual[1]).toStrictEqual([0, 1, -1])
+        });
+
+        it('should []', function () {
+            const  nums = [0,1,1]
+            const actual = threeSum(nums);
+            expect(actual).toStrictEqual([])
+        });
+
+        it('should [[0,0,0]]', function () {
+            const  nums =  [0,0,0]
+            const actual = threeSum(nums);
+            expect(actual).toStrictEqual([[0,0,0]])
+        });
+        it('should [[0,0,0]] if 4', function () {
+            const  nums =  [0,0,0,0]
+            const actual = threeSum(nums);
+            expect(actual).toStrictEqual([[0,0,0]])
+        });
+        it('should [[-2,0,2],[-2,1,1]]', function () {
+            const nums = [-2,0,1,1,2]
+            const actual = threeSum(nums);
+            expect(actual.length).toBe(2)
+            expect(actual[0]).toStrictEqual([-2,0,2])
+            // expect(actual[1]).toStrictEqual([-2,1,1])
+        });
+        it('has 0,0,0', function () {
+            const nums = [3,0,3,2,-4,0,-3,2,2,0,-1,-5]
+            const actual = threeSum(nums);
+            expect(actual.length).toBe(4)
+            expect(actual[0]).toStrictEqual([0,0,0])
         });
     });
 });

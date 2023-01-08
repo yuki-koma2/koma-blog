@@ -1,3 +1,103 @@
+export const threeSum = (nums: number[]): number[][] => {
+    const tmpArray: number[][] = [];
+    const resultArray: number[][] = [];
+
+    // ３つの数字を合計して0になる組み合わせを見つける
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            for (let k = j + 1; k < nums.length; k++) {
+                if (nums[i] + nums[j] + nums[k] === 0) {
+                    tmpArray.push([nums[i], nums[j], nums[k]])
+                }
+            }
+        }
+    }
+    // 一つもなければ空で返す
+    if (tmpArray.length === 0) {
+        return resultArray
+    }
+    for (let i = 0; i < tmpArray.length; i++) {
+        console.log(tmpArray[i]);
+        console.log(tmpArray.slice(i+1,tmpArray.length));
+        const booleans = tmpArray.slice(i+1,tmpArray.length).map(arr =>{
+            // [0,0,0]の時は特殊な処理が必要
+            if (tmpArray[i][0]===0 && tmpArray[i][1] === 0 ) {
+                return arr[0]===0 && arr[1] === 0
+            }
+            return arr.includes(tmpArray[i][0])
+            && arr.includes(tmpArray[i][1])
+            && arr.includes(tmpArray[i][2])
+        });
+        console.log(booleans);
+        if (!booleans.some(v => v)) {
+            resultArray.push(tmpArray[i])
+        }
+    }
+    console.log(resultArray);
+    // 全てが重複OR一つしかなければそのまま返す
+    if (tmpArray.length >= 1 && resultArray.length === 0) {
+        resultArray.push(tmpArray[0])
+    }
+    return resultArray
+};
+
+
+
+export const threeSumOld = (nums: number[]): number[][] => {
+    const tmpArray: number[][] = [];
+    const resultArray: number[][] = [];
+
+    // ３つの数字を合計して0になる組み合わせを見つける
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            for (let k = j + 1; k < nums.length; k++) {
+                if (nums[i] + nums[j] + nums[k] === 0) {
+                    tmpArray.push([nums[i], nums[j], nums[k]])
+                }
+            }
+        }
+    }
+    // 一つもなければ空で返す
+    if (tmpArray.length === 0) {
+        return resultArray
+    }
+    console.log(tmpArray);
+    // 重複する組み合わせを除去する。
+    for (let i = 0; i < tmpArray.length; i++) {
+        // console.log("i",tmpArray[i]);
+        // console.log("length",tmpArray.length );
+        // console.log("---------",tmpArray.length === i + 1);
+        // console.log(tmpArray.length - 1);
+        if (tmpArray.length === i + 1) {
+            // console.log("i-", tmpArray[i-1]);
+            for (let j = i - 1; j >= 0; j--) {
+                console.log("j-", tmpArray[j]);
+                console.log("j- i", tmpArray[i]);
+                if (!(tmpArray[j].includes(tmpArray[i][0])
+                    && tmpArray[j].includes(tmpArray[i][1])
+                    && tmpArray[j].includes(tmpArray[i][2]))) {
+                    resultArray.push(tmpArray[i])
+                }
+            }
+        } else {
+            for (let j = i + 1; j < tmpArray.length; j++) {
+                // console.log("j+",tmpArray[i]);
+                if (!(tmpArray[j].includes(tmpArray[i][0])
+                    && tmpArray[j].includes(tmpArray[i][1])
+                    && tmpArray[j].includes(tmpArray[i][2]))) {
+                    resultArray.push(tmpArray[i])
+                }
+            }
+        }
+    }
+    // 全てが重複OR一つしかなければそのまま返す
+    if (tmpArray.length >= 1 && resultArray.length === 0) {
+        resultArray.push(tmpArray[0])
+    }
+    return resultArray
+};
+
+
 export const longestCommonPrefix = (strs: string[]): string => {
     let commonPref = "";
 
@@ -10,7 +110,7 @@ export const longestCommonPrefix = (strs: string[]): string => {
         if (booleans.every(v => v)) {
             commonPref = commonPref + firstString[i]
         } else {
-          break;
+            break;
         }
     }
     return commonPref

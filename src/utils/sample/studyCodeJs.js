@@ -23,6 +23,7 @@ const fibonacci = (n) => {
     return answer;
 }
 
-export const yourself = {
+export const myAnswer = {
     fibonacci: fibonacci
 };
+

@@ -16,13 +16,26 @@ export const romanToInt = (s: string): number => {
         // CM,XC,IVの例外ケースへの対応 パフォーマンス考慮するほどではなさそう。
         const nextRoman = <RomanString>s[i + 1]
         const twoRoman = roman + nextRoman;
+        // リファクタするならここ
         switch (twoRoman) {
             case 'CM':
                 calc = calc + 900
                 i++
                 break;
+            case 'CD':
+                calc = calc + 400
+                i++
+                break;
             case 'XC':
                 calc = calc + 90
+                i++
+                break;
+            case 'XL':
+                calc = calc + 40
+                i++
+                break;
+            case 'IX':
+                calc = calc + 9
                 i++
                 break;
             case 'IV':
@@ -32,8 +45,6 @@ export const romanToInt = (s: string): number => {
             default:
                 const convertedNumber = romanNumberMap.get(roman) ?? 0;
                 calc = calc + convertedNumber;
-
-
         }
     }
     return calc

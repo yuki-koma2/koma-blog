@@ -1,6 +1,21 @@
 import { myAnswer } from "./studyCodeJs";
 
 describe('sample code test', function () {
+    describe('料金計算', function () {
+        it('何時に釣り合いがとれるのか', function () {
+            for (let i = 0; i < 100; i++) {
+                const sums = 605 + 330 * i;
+                console.log(sums +"円," +(1 + i/2)+"時間");
+                if (3520 < sums) {
+                    console.log((1+i/2 )+"時間");
+                    console.log((11 +1+i/2 )+"時にでるとよさそう");
+                    break
+                }
+            }
+        });
+
+    });
+
     describe('fibonacci', function () {
         it('should return 1', function () {
             expect(1).toBe(1)

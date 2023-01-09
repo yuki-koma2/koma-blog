@@ -1,18 +1,20 @@
 
-function removeDuplicates(nums: (number | null)[]): number {
-    let counter: number = 0;
 
-    for (let i = 0; i < nums.length; i++) {
-        for (let j = 0; j < nums.length; j++) {
-            if (nums[i] === nums[j]) {
-                nums[j] = null
-                counter++
-            }
-        }
-    }
-    nums.filter(num => num !== null)
-    return counter;
-};
+
+// function removeDuplicates(nums: (number | null)[]): number {
+//     let counter: number = 0;
+//
+//     for (let i = 0; i < nums.length; i++) {
+//         for (let j = 0; j < nums.length; j++) {
+//             if (nums[i] === nums[j]) {
+//                 nums[j] = null
+//                 counter++
+//             }
+//         }
+//     }
+//     nums.filter(num => num !== null)
+//     return counter;
+// };
 
 export const threeSum = (nums: number[]): number[][] => {
     const tmpArray: number[][] = [];

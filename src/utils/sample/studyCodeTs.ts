@@ -1,3 +1,19 @@
+
+function removeDuplicates(nums: (number | null)[]): number {
+    let counter: number = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = 0; j < nums.length; j++) {
+            if (nums[i] === nums[j]) {
+                nums[j] = null
+                counter++
+            }
+        }
+    }
+    nums.filter(num => num !== null)
+    return counter;
+};
+
 export const threeSum = (nums: number[]): number[][] => {
     const tmpArray: number[][] = [];
     const resultArray: number[][] = [];
@@ -13,14 +29,14 @@ export const threeSum = (nums: number[]): number[][] => {
         }
     }
     for (let i = 0; i < tmpArray.length; i++) {
-        const booleans = tmpArray.slice(i+1,tmpArray.length).map(arr =>{
+        const booleans = tmpArray.slice(i + 1, tmpArray.length).map(arr => {
             // [0,0,0]の時は特殊な処理が必要
-            if (tmpArray[i][0]===0 && tmpArray[i][1] === 0 ) {
-                return arr[0]===0 && arr[1] === 0
+            if (tmpArray[i][0] === 0 && tmpArray[i][1] === 0) {
+                return arr[0] === 0 && arr[1] === 0
             }
             return arr.includes(tmpArray[i][0])
-            && arr.includes(tmpArray[i][1])
-            && arr.includes(tmpArray[i][2])
+                && arr.includes(tmpArray[i][1])
+                && arr.includes(tmpArray[i][2])
         });
         if (!booleans.some(v => v)) {
             resultArray.push(tmpArray[i])
@@ -28,7 +44,6 @@ export const threeSum = (nums: number[]): number[][] => {
     }
     return resultArray
 };
-
 
 
 export const threeSumOld = (nums: number[]): number[][] => {

@@ -1,21 +1,42 @@
 
 
 
-// function removeDuplicates(nums: (number | null)[]): number {
-//     let counter: number = 0;
-//
-//     for (let i = 0; i < nums.length; i++) {
-//         for (let j = 0; j < nums.length; j++) {
-//             if (nums[i] === nums[j]) {
-//                 nums[j] = null
-//                 counter++
-//             }
-//         }
-//     }
-//     nums.filter(num => num !== null)
-//     return counter;
-// };
+export const threeSumPerfImp = (nums: number[]): number[][] => {
+    const resultArray: number[][] = [];
+    nums.sort((a, b) => a - b);
 
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] > 0) {
+            break;
+        }
+        if (i > 0 && nums[i] === nums[i - 1]) {
+            continue;
+        }
+
+        let left = i + 1;
+        let right = nums.length - 1;
+
+        while (left < right) {
+            const sum = nums[i] + nums[left] + nums[right];
+            if (sum === 0) {
+                resultArray.push([nums[i], nums[left], nums[right]]);
+                while (left < right && nums[left] === nums[left + 1]) {
+                    left++;
+                }
+                while (left < right && nums[right] === nums[right - 1]) {
+                    right--;
+                }
+                left++;
+                right--;
+            } else if (sum < 0) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+    }
+    return resultArray;
+};
 export const threeSum = (nums: number[]): number[][] => {
     const tmpArray: number[][] = [];
     const resultArray: number[][] = [];
@@ -174,3 +195,21 @@ export const romanToInt = (s: string): number => {
 };
 
 type RomanString = 'I' | 'V' | 'X' | 'L' | 'C' | 'D' | 'M';
+
+
+export const isHappy = (n: number): boolean => {
+
+    const set = new Set<number>();
+    let current = n;
+    while (current !== 1 && !set.has(current)) {
+        set.add(current);
+        let sum = 0;
+        const str = current.toString();
+        for (let i = 0; i < str.length; i++) {
+            const digit = +str[i];
+            sum += digit * digit;
+        }
+        current = sum;
+    }
+    return current === 1;
+};

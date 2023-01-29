@@ -52,14 +52,14 @@ export const threeSum = (nums: number[]): number[][] => {
         }
     }
     for (let i = 0; i < tmpArray.length; i++) {
-        const booleans = tmpArray.slice(i+1,tmpArray.length).map(arr =>{
+        const booleans = tmpArray.slice(i + 1, tmpArray.length).map(arr => {
             // [0,0,0]の時は特殊な処理が必要
-            if (tmpArray[i][0]===0 && tmpArray[i][1] === 0 ) {
-                return arr[0]===0 && arr[1] === 0
+            if (tmpArray[i][0] === 0 && tmpArray[i][1] === 0) {
+                return arr[0] === 0 && arr[1] === 0
             }
             return arr.includes(tmpArray[i][0])
-            && arr.includes(tmpArray[i][1])
-            && arr.includes(tmpArray[i][2])
+                && arr.includes(tmpArray[i][1])
+                && arr.includes(tmpArray[i][2])
         });
         if (!booleans.some(v => v)) {
             resultArray.push(tmpArray[i])
@@ -67,7 +67,6 @@ export const threeSum = (nums: number[]): number[][] => {
     }
     return resultArray
 };
-
 
 
 export const threeSumOld = (nums: number[]): number[][] => {

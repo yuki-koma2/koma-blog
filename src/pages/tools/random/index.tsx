@@ -1,3 +1,5 @@
-export default function Random() {
-    return (<div>test</div>);
+import Random from "../../../feature/tools/random";
+
+export default function RandomPage() {
+    return (<Random/>);
 }

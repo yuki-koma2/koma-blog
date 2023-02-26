@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../../styles/Home.module.css'
 import Link from "next/link";
-import { MantineDemoButton } from "../components/mantineDemo/MantineDemoButton";
 
 const Home: NextPage = () => {
   return (
@@ -36,9 +35,6 @@ const Home: NextPage = () => {
               <p>this is sample post</p>
             </div>
           </Link>
-
-          <MantineDemoButton href={'/ui-test'}/>
-
         </div>
       </main>
 

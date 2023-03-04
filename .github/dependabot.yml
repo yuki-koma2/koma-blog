@@ -5,7 +5,15 @@
 
 version: 2
 updates:
-  - package-ecosystem: "yarn"
+  - package-ecosystem: "npm"
     directory: "/" 
     schedule:
       interval: "weekly"
+    assignees:
+      - "yuki-koma2"
+    commit-message:
+      prefix: "[yarn] "
+      include: "scope"
+    reviewers:
+      - "yuki-koma2"
+      

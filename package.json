@@ -16,7 +16,7 @@
     "@nextui-org/react": "^1.0.0-beta.12",
     "dayjs": "^1.11.7",
     "microcms-js-sdk": "2.3.2",
-    "next": "^13.2.1",
+    "next": "^13.4.1",
     "next-seo": "5.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

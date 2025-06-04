@@ -4,7 +4,7 @@ export const routes = {
         description: "this is a top page"
     },
     blog: {
-        path: (options?: routingOption) => `/blog${options}`,
+        path: (options?: routingOption) => `/blog${options ?? ''}`,
         description: "blog post list",
         detail: {
             path: (contentId: number) => `/blog/${contentId}`,
